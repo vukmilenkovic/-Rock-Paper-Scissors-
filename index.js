@@ -22,3 +22,9 @@ function getComputerChoice(){
 }
 
 // Function that takes user input and returns it 
+function getHumanChoice(){
+    // USe prompt to get the user inpurt 
+    let input = prompt("Please choice what symbol you will use: ROCK, PAPER OR SCISSORS")
+    console.log(input)
+}
+
