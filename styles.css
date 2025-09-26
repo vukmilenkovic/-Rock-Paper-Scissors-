@@ -1,0 +1,21 @@
+body {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 150px auto;
+}
+.game-container {
+    width: 500px;
+    height: 500px;
+    border: 2px solid rgb(9, 100, 42);
+    display: flex;
+    justify-content: space-around;
+}
+
+.user-input {
+    width: 450px;
+    height: 30px;
+    margin: 30px auto;
+    align-self: flex-start;
+    border: 1px solid rgb(114, 10, 45); 
+}
