@@ -8,9 +8,10 @@ function getComputerChoice(){
 // Function that takes user input and returns it 
 function getHumanChoice(){
     // USe prompt to get the user inpurt 
-    let input = prompt("Please choice what symbol you will use: ROCK, PAPER OR SCISSORS")
+    let input = document.querySelector('.user-input').value;
+    console.log(input);
     // Set the human choice to lower case
-    return input.toLowerCase();
+    return input
 }
 
 // Variables that track the human and computer scores
@@ -26,41 +27,58 @@ let computerScore = 0;
 function playRound(){
     let humanChoice = getHumanChoice();
     let computerChoice = getComputerChoice();
-    console.log(humanChoice);
-    console.log(computerChoice);
+    // Get the DOM element that displays current hand
+    document.querySelector(".human-current").textContent = humanChoice;
+    document.querySelector(".computer-current").textContent = computerChoice;
     // Combination for user winning
     if(humanChoice == "rock" && computerChoice == 'scissors' || humanChoice == "paper" && computerChoice == "rock" || humanChoice == "scissors" && computerChoice == "paper"){
         console.log("You won this round! +1");
+        document.querySelector('.message').textContent = "You won this round! +1";
         humanScore += 1;
+        document.querySelector('.human-score').textContent = humanScore;
         console.log("Your score is " + humanScore);
         console.log("Computer score is " + computerScore);
         return 
     } // Combination for computer winning
     else if (humanChoice == "rock" && computerChoice == 'paper' || humanChoice == "paper" && computerChoice == "scissors" || humanChoice == "scissors" && computerChoice == "rock"){
         console.log("Robot won this round! +1");
+        document.querySelector('.message').textContent = "The machine won this round! +1";
         computerScore += 1;
+        document.querySelector('.computer-score').textContent = computerScore;
         console.log("Your score is " + humanScore);
         console.log("Computer score is " + computerScore);
         return 
     } // Print out that it's a tie
     else {
         console.log("It's a tie, don't give up,  you can beat the machine! Just like in slots :)")
+        document.querySelector('.message').textContent = "It's a tie, don't give up,  you can beat the machine! Just like in slots :)";
     }
-    
 }
 
-
-
-// TODO: Make the game logic so that it keeps track of the score revokes the playRound function.
-while(humanScore  < 3 && computerScore < 3) {
-   playRound();
+// Function  that will reset the dom, the values, and the game
+function gameOver(){
+    const gameContainer = document.querySelector('.game-container')
+    gameContainer.style.backgroundColor = 'red';
 }
-
 
 // Anounce the winner 
-if (humanScore == 3 ){
-console.log("Human won, better luch next time bot!");
-} else if (computerScore == 3){
-console.log("Robot won, how can you allow this?")
-}
+    if (humanScore == 3 ){
+    console.log("Human won, better luch next time bot!");
+    document.querySelector('.message').textContent = "Human won, better luch next time bot!";
+    gameOver();
+    } else if (computerScore == 3){
+    console.log("Robot won, how can you allow this?")
+    document.querySelector('.message').textContent = "Robot won, how can you allow this?";
+    gameOver();
+    }
+
+// Invoke the playRound() function when the user types in a text and presses enter
+document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      playRound();
+    }
+  });
+});
+
 
