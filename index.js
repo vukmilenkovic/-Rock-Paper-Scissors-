@@ -9,7 +9,6 @@ function getComputerChoice(){
 function getHumanChoice(){
     // USe prompt to get the user inpurt 
     let input = document.querySelector('.user-input').value;
-    console.log(input);
     // Set the human choice to lower case
     return input
 }
@@ -30,32 +29,23 @@ function playRound(){
     document.querySelector(".computer-current").value = computerChoice;
     // Combination for user winning
     if(humanChoice == "rock" && computerChoice == 'scissors' || humanChoice == "paper" && computerChoice == "rock" || humanChoice == "scissors" && computerChoice == "paper"){
-        console.log("You won this round! +1");
         document.querySelector('.message').textContent = "You won this round! +1";
         humanScore += 1;
         document.querySelector('.human-score').textContent = humanScore;
-        console.log("Your score is " + humanScore);
-        console.log("Computer score is " + computerScore);
     } // Combination for computer winning
     else if (humanChoice == "rock" && computerChoice == 'paper' || humanChoice == "paper" && computerChoice == "scissors" || humanChoice == "scissors" && computerChoice == "rock"){
-        console.log("Robot won this round! +1");
         document.querySelector('.message').textContent = "The machine won this round! +1";
         computerScore += 1;
         document.querySelector('.computer-score').textContent = computerScore;
-        console.log("Your score is " + humanScore);
-        console.log("Computer score is " + computerScore);
     } // Print out that it's a tie
     else {
-        console.log("It's a tie, don't give up,  you can beat the machine! Just like in slots :)")
         document.querySelector('.message').textContent = "It's a tie, don't give up,  you can beat the machine! Just like in slots :)";
     }
     // Check for winner
     if (humanScore == 3 ) {
-        console.log("Human won, better luch next time bot!");
         document.querySelector('.message').textContent = "Human won, better luch next time bot!";
         gameOver("Human won, better luck next time bot!");
     } else if (computerScore == 3) {
-        console.log("Robot won, how can you allow this?")
         document.querySelector('.message').textContent = "Robot won, how can you allow this?";
         gameOver("Robot won, how can you allow this?");
     }
