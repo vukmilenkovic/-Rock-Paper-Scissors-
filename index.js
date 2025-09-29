@@ -53,18 +53,54 @@ function playRound(){
     if (humanScore == 3 ) {
         console.log("Human won, better luch next time bot!");
         document.querySelector('.message').textContent = "Human won, better luch next time bot!";
-        gameOver();
+        gameOver("Human won, better luck next time bot!");
     } else if (computerScore == 3) {
         console.log("Robot won, how can you allow this?")
         document.querySelector('.message').textContent = "Robot won, how can you allow this?";
-        gameOver();
+        gameOver("Robot won, how can you allow this?");
     }
 }
 
 // Function  that will reset the dom, the values, and the game
-function gameOver(){
-    const gameContainer = document.querySelector('.game-container')
-    gameContainer.style.backgroundColor = 'red';
+function gameOver(winnerMessage){
+    const gameContainer = document.querySelector('.game-container');
+    // Clear the current HTML document
+    gameContainer.innerHTML = '';
+
+    // Create a new mwssage element
+    const message = document.createElement('h1');
+    message.textContent = "Game Over!"
+    message.style.color = "white";
+
+    // Create a heading for the winner
+    const wMessage = document.createElement('h4');
+    wMessage.textContent = winnerMessage; // dynamic message
+    wMessage.style.color = 'white';
+    wMessage.style.marginBottom = '20px';
+
+    // Create a restart button
+    const restartBtn = document.createElement('button');
+    restartBtn.textContent = 'Play Again';
+    restartBtn.classList.add('restart-btn');
+
+    // Add an event listener to the new button
+    restartBtn.addEventListener('click', () => {
+        console.log('Game restarted!');
+        window.location.reload();
+    });
+    // Append new elements to the container
+    gameContainer.appendChild(message);
+    gameContainer.appendChild(restartBtn);
+    gameContainer.appendChild(wMessage); 
+    // Change container style
+    Object.assign(gameContainer.style, {
+        backgroundColor: 'red',
+        padding: '20px',
+        textAlign: 'center',
+        width: '500px',
+        height: '500px'
+    });
+
 }
 
 
