@@ -17,16 +17,25 @@ function getHumanChoice(){
 let humanScore = 0;
 let computerScore = 0;
 
+const buttons = document.querySelectorAll('.btn');
+
+buttons.forEach(btn => {
+    btn.addEventListener('click', (event) => {
+        event.preventDefault();
+        console.log('The value of the button is: ', btn.textContent);
+    })
+})
+
 // Game Logic
 // the game will be played round by round 
 // Function that takes human and computer choice as arguments, plays a single round, increments the round winner's score and logs winner announcment
 function playRound(){
-    // Define choices
-    let humanChoice = getHumanChoice();
-    let computerChoice = getComputerChoice();
-    // Get the DOM element that displays current hand
-    document.querySelector(".human-current").value = humanChoice;
-    document.querySelector(".computer-current").value = computerChoice;
+    // Get  the   choice from the button
+    let humanChoice;
+    let computerChoice;
+    
+    // Get the buttons in the DOM
+    
     // Combination for user winning
     if(humanChoice == "rock" && computerChoice == 'scissors' || humanChoice == "paper" && computerChoice == "rock" || humanChoice == "scissors" && computerChoice == "paper"){
         document.querySelector('.message').textContent = "You won this round! +1";
@@ -96,12 +105,12 @@ function gameOver(winnerMessage){
 
 
 // Invoke the playRound() function when the user types in a text and presses enter
-document.addEventListener('DOMContentLoaded', () => {
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-      playRound();
-    }
-  });
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//   document.addEventListener('keydown', (event) => {
+//     if (event.key === 'Enter') {
+//       playRound();
+//     }
+//   });
+// });
 
 

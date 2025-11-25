@@ -6,7 +6,7 @@ body {
     margin: 150px auto;
 }
 .game-container {
-    width: 500px;
+    width: auto;
     height: auto;
     border: 2px solid rgb(9, 100, 42);
     display: flex;
@@ -34,4 +34,26 @@ h3 {
 
 .scores {
     font-size: 18px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: stretch;
+}
+
+.btn{
+    border: 1px solid black;
+    background-color: rgb(231, 197, 145);
+    height: 100px;
+    width: 150px;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 24px;;
 }
