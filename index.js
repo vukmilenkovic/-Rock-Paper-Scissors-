@@ -13,51 +13,45 @@ function getHumanChoice(){
     return input
 }
 
-// Define the scores
-let humanScore = 0;
-let computerScore = 0;
+    const winsAgainst = {
+        rock: 'scissors',
+        paper: 'rock',
+        scissors: 'paper'
+    }
 
-const buttons = document.querySelectorAll('.btn');
+    const buttons = document.querySelectorAll('.btn');
+    let currentPlayer = 1;
 
-buttons.forEach(btn => {
-    btn.addEventListener('click', (event) => {
-        event.preventDefault();
-        console.log('The value of the button is: ', btn.textContent);
+    buttons.forEach(btn => {
+        btn.addEventListener('click', (event) => {
+            if (currentPlayer === 1){
+                let player1 = btn.textContent;
+                console.log("Player 1 choice is ", player1);
+            } else {
+                let player2 = btn.textContent;
+                console.log("Player 2 choice is : ",  player2);
+            }
+            
+            currentPlayer =  currentPlayer === 1 ? 2 : 1;
+            event.preventDefault();
+        })
     })
-})
+
+
 
 // Game Logic
 // the game will be played round by round 
 // Function that takes human and computer choice as arguments, plays a single round, increments the round winner's score and logs winner announcment
-function playRound(){
-    // Get  the   choice from the button
-    let humanChoice;
-    let computerChoice;
-    
-    // Get the buttons in the DOM
-    
-    // Combination for user winning
-    if(humanChoice == "rock" && computerChoice == 'scissors' || humanChoice == "paper" && computerChoice == "rock" || humanChoice == "scissors" && computerChoice == "paper"){
-        document.querySelector('.message').textContent = "You won this round! +1";
-        humanScore += 1;
-        document.querySelector('.human-score').textContent = humanScore;
-    } // Combination for computer winning
-    else if (humanChoice == "rock" && computerChoice == 'paper' || humanChoice == "paper" && computerChoice == "scissors" || humanChoice == "scissors" && computerChoice == "rock"){
-        document.querySelector('.message').textContent = "The machine won this round! +1";
-        computerScore += 1;
-        document.querySelector('.computer-score').textContent = computerScore;
-    } // Print out that it's a tie
-    else {
-        document.querySelector('.message').textContent = "It's a tie, don't give up,  you can beat the machine! Just like in slots :)";
+function playRound(choice1, choice2){
+    console.log("Play Round was invoked.");
+    if (choice1 === choice2) return "tie";
+
+    if (winsAgainst[choice1] === choice2) {
+        return "player1";
     }
-    // Check for winner
-    if (humanScore == 3 ) {
-        document.querySelector('.message').textContent = "Human won, better luch next time bot!";
-        gameOver("Human won, better luck next time bot!");
-    } else if (computerScore == 3) {
-        document.querySelector('.message').textContent = "Robot won, how can you allow this?";
-        gameOver("Robot won, how can you allow this?");
-    }
+
+    return "player2";
+   
 }
 
 // Function  that will reset the dom, the values, and the game
