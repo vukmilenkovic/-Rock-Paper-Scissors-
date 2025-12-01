@@ -21,35 +21,46 @@ function getHumanChoice(){
 
     const buttons = document.querySelectorAll('.btn');
     let currentPlayer = 1;
+    let player1 = '';
+    let player2 = '';
 
     buttons.forEach(btn => {
         btn.addEventListener('click', (event) => {
             if (currentPlayer === 1){
-                let player1 = btn.textContent;
+                player1 = btn.textContent;
+                player1 = player1.toLowerCase();
                 console.log("Player 1 choice is ", player1);
             } else {
-                let player2 = btn.textContent;
+                player2 = btn.textContent;
+                player2 = player2.toLowerCase();
                 console.log("Player 2 choice is : ",  player2);
             }
+
+            if(player1 !== '' && player2 !== ''){
+                playRound(player1, player2);
+                // Reset the values after each round
+                player1 = '';
+                player2 = '';
+           }        
+            
+
+            
             
             currentPlayer =  currentPlayer === 1 ? 2 : 1;
             event.preventDefault();
         })
     })
 
-
-
-// Game Logic
-// the game will be played round by round 
-// Function that takes human and computer choice as arguments, plays a single round, increments the round winner's score and logs winner announcment
+// TODO: Keep the track of the score for both players.
 function playRound(choice1, choice2){
     console.log("Play Round was invoked.");
     if (choice1 === choice2) return "tie";
 
     if (winsAgainst[choice1] === choice2) {
-        return "player1";
+        console.log('{layer 1 wins');
+        return;
     }
-
+    console.log('Player 2 wins!')
     return "player2";
    
 }
