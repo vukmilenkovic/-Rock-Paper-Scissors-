@@ -42,26 +42,35 @@ function getHumanChoice(){
                 player1 = '';
                 player2 = '';
            }        
-            
 
-            
-            
             currentPlayer =  currentPlayer === 1 ? 2 : 1;
             event.preventDefault();
         })
     })
 
+let playerScore = 0;
+let botScore = 0;
 // TODO: Keep the track of the score for both players.
 function playRound(choice1, choice2){
     console.log("Play Round was invoked.");
-    if (choice1 === choice2) return "tie";
+    if (choice1 === choice2) {
+        return console.log("tie"); 
+    };
 
     if (winsAgainst[choice1] === choice2) {
-        console.log('{layer 1 wins');
+        console.log('Player 1 wins');
+        // Change the html document
+        
+        const humanScore = document.querySelector('.human-score');
+        playerScore += 1;
+        humanScore.textContent = playerScore;
         return;
+        
+    } else {
+        console.log('Player 2 wins!');  
     }
-    console.log('Player 2 wins!')
-    return "player2";
+    
+
    
 }
 
