@@ -50,10 +50,19 @@ function getHumanChoice(){
 
 let playerScore = 0;
 let botScore = 0;
+let currRound = 0;
+const humanScore = document.querySelector('.human-score');
+const round = document.querySelector('.round');
+const computerScore = document.querySelector('.bot-score');
+const roundWinner = document.querySelector('.round-winner')
+
 // TODO: Keep the track of the score for both players.
 function playRound(choice1, choice2){
+    currRound += 1;
+    round.textContent = currRound;
     console.log("Play Round was invoked.");
     if (choice1 === choice2) {
+        roundWinner.textContent = 'Tie';
         return console.log("tie"); 
     };
 
@@ -61,12 +70,15 @@ function playRound(choice1, choice2){
         console.log('Player 1 wins');
         // Change the html document
         
-        const humanScore = document.querySelector('.human-score');
         playerScore += 1;
         humanScore.textContent = playerScore;
+        roundWinner.textContent = 'Human';
         return;
         
     } else {
+        botScore += 1;
+        computerScore.textContent = botScore;
+        roundWinner.textContent = 'Bot';
         console.log('Player 2 wins!');  
     }
     

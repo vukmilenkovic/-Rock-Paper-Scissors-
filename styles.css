@@ -34,6 +34,13 @@ h3 {
 
 .scores {
     font-size: 18px;
+    text-align: center;
+}
+.human-score{
+    font-size: 24px;
+}
+.bot-score{
+    font-size: 24px;
 }
 
 .buttons {
@@ -73,6 +80,8 @@ a{
 .announce-round-winner {
     border: 0.5px solid red;
     width: 180px;
+    display: flex;
+    flex-direction: column;
 }
 
 .announce-round-winner h1 {
@@ -82,4 +91,8 @@ a{
     text-align: center;
     width: 180px;
     border: 0.5px solid rgb(165, 224, 110);
+}
+
+.round {
+    font-size: 50px;
 }
