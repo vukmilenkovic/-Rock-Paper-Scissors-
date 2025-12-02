@@ -63,7 +63,7 @@ function playRound(choice1, choice2){
     console.log("Play Round was invoked.");
     if (choice1 === choice2) {
         roundWinner.textContent = 'Tie';
-        return console.log("tie"); 
+        return; 
     };
 
     if (winsAgainst[choice1] === choice2) {
@@ -73,7 +73,6 @@ function playRound(choice1, choice2){
         playerScore += 1;
         humanScore.textContent = playerScore;
         roundWinner.textContent = 'Human';
-        return;
         
     } else {
         botScore += 1;
@@ -81,7 +80,13 @@ function playRound(choice1, choice2){
         roundWinner.textContent = 'Bot';
         console.log('Player 2 wins!');  
     }
+
+    console.log(playerScore, botScore);
+    if (playerScore == 5 || botScore == 5){
+        gameOver();
+    }
     
+    return;
 
    
 }
